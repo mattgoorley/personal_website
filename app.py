@@ -36,9 +36,9 @@ def contact():
         else:
             msg = Message(form.subject.data, sender=Email.ymail, recipients=[Email.gmail])
             msg.body = """
-            From: %s <%s>
-            %s
-            """ % (form.name.data, form.email.data, form.message.data)
+            From: {} <{}>
+            {}
+            """.format(form.name.data, form.email.data, form.message.data)
             mail.send(msg)
 
             return 'Form posted.'
