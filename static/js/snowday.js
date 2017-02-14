@@ -26,6 +26,7 @@ $(document).ready(function() {
     // Wrappers for url creation
     var wrapper = {
         venueSearch: "https://api.foursquare.com/v2/venues/search?",
+        venueUnique: "https://api.foursquare.com/v2/venues/",
         lat : "41.399856",
         lng : "2.158286999999973",
         clientId: "client_id=XVODQ5S2KJJ0BORRXJLTGKOIFMYOLCW0YHABIFKFQPQTINRU",
@@ -43,6 +44,7 @@ $(document).ready(function() {
 
     // submit button action for category search
     $('#cat-selector').submit( function() {
+        $('.container-results div').empty();
         cat = "categoryId=";
         getCategories()
         var myUrl = urlAssembler(cat)
@@ -73,31 +75,62 @@ $(document).ready(function() {
             + "&" + cat + wrapper.radius
         return myUrl
     }
+
+    var getVenue = function(id) {
+        var tag = '#' + id
+        venueUrl = wrapper.venueUnique + id + '/photos?'+ wrapper.clientId + "&" + wrapper.clientSecret + '&v=20170101'
+        $.ajax({
+            method: "GET",
+            url: venueUrl,
+            datatype: "json",
+            success: function(response){
+                if (response.response.photos.items.length > 0) {
+                var imgPrefix = response.response.photos.items[0].prefix
+                var imgSuffix = response.response.photos.items[0].suffix
+                var img = imgPrefix + "250x250" + imgSuffix
+                console.log(img)
+                $(tag).attr('src', img)
+                }
+                else {
+                    var img = "https://lh3.googleusercontent.com/81tvpT59weJbOGWT9jQ8_9RtcGXKCcVv59BU7Wl6PnS7okIgrS4iTCgwWpPQY2FRKw=w300"
+                    $(tag).attr('src', img)
+                }
+            }
+        })
+    }
+
+
     // Ajax call to Foursquare API
     var searchVenues = function (myUrl) {
+        var idArray = []
         $.ajax({
             method: "GET",
             url: myUrl,
             datatype: "json",
             success: function(response){
-                // console.log(response.response.venues)
                 len = response.response.venues.length;
+                if (len == 0) {
+                    var template = $('#no-results').html();
+                    var display = {'result': 'No results for your search, please try something else!'};
+                    Mustache.parse(template, ["<%","%>"])
+                    $(".container-results").append(Mustache.render(template, display))
+                }
                 for(var i=0; i < len; i++) {
                     var name = response.response.venues[i].name;
                     var address = response.response.venues[i].location.address;
                     var phone = response.response.venues[i].contact.formattedPhone;
-                    var url = response.response.venues[i].url
-
+                    var url = response.response.venues[i].url;
+                    var id = response.response.venues[i].id;
+                    getVenue(id);
                     var template = $('#venue-slides').html();
-                    var display = {'name':name,'address':address,'phone':phone,'url':url}
+                    var display = {'name':name,'address':address,'phone':phone,'url':url,'id':id}
                     Mustache.parse(template, ["<%","%>"])
                     $(".container-results").append(Mustache.render(template, display))
                 }
-            },
+            }
         })
     };
 
-    // formatting response data
 
 });
 

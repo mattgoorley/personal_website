@@ -7,6 +7,8 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDzS4zkJ-lF8-Z-7WNAarxNYR20X0DR-LM&libraries=places&"></script>
 
   <link href="../static/css/snowday.css" type="text/css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
+
 
 
 </head>
@@ -16,62 +18,92 @@
     <header>
       <h1>Snow Day</h1>
     </header>
+    <div class="row">
+      <div class="col s12 m8 l8" style="float:none; margin:auto">
 
-    <div class="pac-card" id="pac-card">
-      <div>
-        <div id="title">
-          Autocomplete search
+        <div class="pac-card" id="pac-card">
+          <div id="title">
+            Where are you?
+          </div>
+
+          <div id="pac-container">
+            <input id="pac-input" type="text"
+                placeholder="Enter a location">
+          </div>
         </div>
-      </div>
-      <div id="pac-container">
-        <input id="pac-input" type="text"
-            placeholder="Enter a location">
-        <p id='lat-val' style="visibility: hidden;"></p>
-        <p id='lng-val' style="visibility: hidden;"></p>
+
       </div>
     </div>
 
-    <div class="cat-card" id="cat-card">
-      <div>
-        <div id="title">
-          Select Catagory
+    <div class="row">
+      <div class="col s12 m8 l8" style="float:none; margin:auto">
+
+        <div class="cat-card" id="cat-card">
+
+          <div id="title">
+            What do you want?
+          </div>
+
+          <form id="cat-selector" class="cat-controls">
+
+              <input type="checkbox" class="filled-in" name="type" id="changetype-food" value="food" checked="checked">
+              <label for="changetype-food" class="checks">Food</label>
+
+              <input type="checkbox" class="filled-in" name="type" id="changetype-nightlife" value="nightlife">
+              <label for="changetype-nightlife" class="checks">Drinks</label>
+
+              <input type="checkbox" class="filled-in" name="type" id="changetype-convenience" value="convenience">
+              <label for="changetype-convenience" class="checks">Convenience Stores</label>
+
+
+              <input type="checkbox" class="filled-in" name="type" id="changetype-drugstore" value="drugstore">
+              <label for="changetype-drugstore" class="checks">Drug Stores</label>
+
+              <input type="checkbox" class="filled-in" name="type" id="changetype-shops" value="shops">
+              <label for="changetype-shops" class="checks">Shops (Food & Drink)</label>
+
+              <button class="btn waves-effect waves-light" id="input-btn">
+                <input type="submit" value="Submit">
+              </button>
+          </form>
+
         </div>
+
       </div>
-      <form id="cat-selector" class="cat-controls">
-        <input type="checkbox" name="type" id="changetype-food" value="food" checked="checked">
-        <label for="cat-food">Food</label>
-
-        <input type="checkbox" name="type" id="changetype-nightlife" value="nightlife">
-        <label for="cat-nightlife">Drinks</label>
-
-        <input type="checkbox" name="type" id="changetype-convenience" value="convenience">
-        <label for="cat-convenience">Convenience Stores</label>
-
-        <input type="checkbox" name="type" id="changetype-drugstore" value="drugstore">
-        <label for="cat-drugstore">Drug Stores</label>
-
-        <input type="checkbox" name="type" id="changetype-shops" value="shops">
-        <label for="cat-shops">Shops (Food & Drink)</label>
-
-        <input type="submit" value="Submit">
-      </form>
     </div>
-    <div class='container-results'>
 
+    <div class="col m8 s12">
+      <div class='container-results row'>
+
+      </div>
     </div>
   </div>
 </body>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js"></script>
 <script type="text/javascript" src='../static/js/snowday.js'></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
 <script id='venue-slides' type='x-tmpl-mustache'>
-    <div class='card' id=<%name%> style='color:black'>
-        <h5 class="name"><%name%></h5>
-        <p class='address'><%address%></p>
-        <p class="phone"><%phone%></div>
-        <p class="url"><%url%></div>
+    <div class='col s12 m4'>
+      <div class='card' id=<%name%> style='color:black'>
+          <div class="card-image waves-effect waves-block waves-light">
+          <a href=<%url%>  ><img src="" id=<%id%>></a>
+          </div>
+          <div class="card-content">
+            <p class='address'><%address%></p>
+            <a href=<%url%> id='url'><span class="card-title activator brown-text text-darken-4"><%name%></span></a>
+            <p class="phone"><%phone%></div>
+          </div>
+      </div>
     </div>
+</script>
+
+<script id='no-results' type='x-tmpl-mustache'>
+    <div class='col s12 m8 l8'>
+      <div class='card' style='color:black'>
+      <div class="card-content">
+        <h3 class="result"><%result%></h3>
+      </div>
 </script>
 
 </html>

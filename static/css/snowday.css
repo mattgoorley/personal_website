@@ -14,10 +14,6 @@ body {
     margin: 20px;
 }
 
-.subject-wrapper {
-    padding: 10px 15px;
-}
-
 h1 {
     text-shadow:
         -1px -1px 0 #000,
@@ -28,220 +24,68 @@ h1 {
     margin-bottom: .5rem;
 }
 
-.place { font-size: 24pt; padding: 5px }
-.place A { text-decoration: none; color: #333 }
-#count { font-size: 96pt; color: #999 }
-.note { font-size: 66%; position: fixed; bottom: 10px; right: 10px; background-color: white; padding: 5px }
-.count { color: #999; font-size: 24pt; }
-
-/*map shit*/
-      #map {
-        height: 99%;
-        width: 95%;
-        position: relative;
-        margin: 0;
-      }
-      /* Optional: Makes the sample page fill the window. */
-      html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
-      #description {
-        font-family: Roboto;
-        font-size: 15px;
-        font-weight: 300;
-      }
-
-      #infowindow-content .title {
-        font-weight: bold;
-      }
-
-      #infowindow-content {
-        display: none;
-      }
-
-      #map #infowindow-content {
-        display: inline;
-      }
-
-      .pac-card {
-        margin: 10px 10px 0 0;
-        border-radius: 2px 0 0 2px;
-        box-sizing: border-box;
-        -moz-box-sizing: border-box;
-        outline: none;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-        background-color: #fff;
-        font-family: Roboto;
-      }
-
-      #pac-container {
-        padding-bottom: 12px;
-        margin-right: 12px;
-      }
-
-      .pac-controls {
-        display: inline-block;
-        padding: 5px 11px;
-      }
-
-      .pac-controls label {
-        font-family: Roboto;
-        font-size: 13px;
-        font-weight: 300;
-      }
-
-      #pac-input {
-        background-color: #fff;
-        font-family: Roboto;
-        font-size: 15px;
-        font-weight: 300;
-        margin-left: 12px;
-        padding: 0 11px 0 13px;
-        text-overflow: ellipsis;
-        width: 400px;
-      }
-
-      #pac-input:focus {
-        border-color: #4d90fe;
-      }
-
-      #title {
-        color: #fff;
-        background-color: #4d90fe;
-        font-size: 25px;
-        font-weight: 500;
-        padding: 6px 12px;
-      }
-/*Card Shit*/
-
-.content {
-    position:fixed;
-    top:62px;
-    bottom:0px;
-    left:0px;
-    right:0px;
-    overflow:scroll;
-    -webkit-overflow-scrolling:touch;
-    margin-bottom:30px;
+.pac-card {
+  margin: 10px 10px 0 0;
+  border-radius: 2px 0 0 2px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  outline: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  background-color: #fff;
+  font-family: Roboto;
 }
 
-.footer {
-    position:fixed;
-    height:22px;
-    left:0px;
-    right:0px;
-    bottom:0px;
-    background:#FFF;
-    color:888;
-    text-align:center;
-    padding:5px 0px 0px 0px;
-    border-top:5px solid #CCC;
-    font-size:12px;
+#pac-container {
+  padding-bottom: 12px;
+  margin-right: 12px;
 }
 
-.float-left .card {
-    float:left;
-    width:300px;
-    height:270px;
+.pac-controls {
+  display: inline-block;
+  padding: 5px 11px;
 }
 
-.multi-column {
-    columns:300px 3;
-    -webkit-columns:300px 3;
+.pac-controls label {
+  font-family: Roboto;
+  font-size: 13px;
+  font-weight: 300;
 }
 
-.card {
-    background:#FFF;
-    border:1px solid #AAA;
-    border-bottom:3px solid #BBB;
-    padding:0px;
-    margin:15px;
-    overflow:hidden;
+#pac-input {
+  background-color: #fff;
+  font-family: Roboto;
+  font-size: 15px;
+  font-weight: 300;
+  margin-left: 12px;
+  padding: 0 11px 0 13px;
+  text-overflow: ellipsis;
+  width: 400px;
+  color:black;
 }
 
-.card h1 {
-    margin:0px;
-    padding:10px;
-    padding-bottom:0px;
+#pac-input:focus {
+  border-color: #4d90fe;
 }
 
-.card p {
-    margin:0px;
-    padding:10px;
+#title {
+  color: #fff;
+  background-color: #4d90fe;
+  font-size: 25px;
+  font-weight: 500;
+  padding: 6px 12px;
+}
+.checks {
+  color:#4d90fe;
+  text-shadow:
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000;
 }
 
-.card-image {
-    width:100%;
-    height:200px;
-    padding:0px;
-    margin:0px;
-    background-position:center;
-    background-repeat:no-repeat;
-    position:relative;
-    overflow:hidden;
-}
-
-.card-image .banner {
-    height:50px;
-    width:50px;
-    top:0px;
-    right:0px;
-    background-position:top right;
-    background-repeat:no-repeat;
-    background-image:url('../images/new.png');
-    position:absolute;
-}
-
-.card-image h1,
-.card-image h2,
-.card-image h3,
-.card-image h4,
-.card-image h5,
-.card-image h6 {
-    position:absolute;
-    bottom:0px;
-    width:100%;
-    color:white;
-    background:rgba(0,0,0,0.65);
-    margin:0px;
-    padding:6px;
-    border:none;
-}
-
-.rightColumn,
-.leftColumn {
-    display:inline-block;
-    width:49%;
-    vertical-align:top;
-}
-
-.column {
-    display:inline-block;
-    vertical-align:top;
-}
-
-.image1 {
-    background-image:url('http://farm6.staticflickr.com/5323/9902848784_cbd10ba3ca_c.jpg');
-}
-
-.image2 {
-    background-image:url('http://farm6.staticflickr.com/5448/9901034384_e3de7406c3_c.jpg');
-}
-
-.image3 {
-    background-image:url('http://farm8.staticflickr.com/7383/9899900453_4540cf9de6_c.jpg');
-}
-
-.image4 {
-    background-image:url('http://farm3.staticflickr.com/2811/9680904065_7f866f4ab5_c.jpg');
-}
-
-.image5 {
-    background-image:url('http://farm6.staticflickr.com/5496/9684141030_70a80e3b40_z.jpg');
-}
-
-.image6 {
-    background-image:url('http://farm4.staticflickr.com/3726/9522001276_21bb6fbd64_z.jpg');
+#input-btn {
+  background-color: #4d90fe;
+  display: block;
+  margin: auto;
+  width: 30%;
 }
