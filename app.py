@@ -51,3 +51,7 @@ def contact():
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0",port=5000,debug=False)
+<<<<<<< HEAD
+=======
+
+>>>>>>> 8a4b01530757ae1654a5e652d2c153bfc0afeb0d
