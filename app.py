@@ -1,8 +1,13 @@
+<<<<<<< HEAD
 
 from flask import Flask, render_template, request, redirect, url_for, flash
+=======
+from flask import Flask, render_template, request, redirect, url_for, flash, json, jsonify
+>>>>>>> 4714f3b02fde8a78d2d51d938423d4fb2b66bb9b
 from forms import ContactForm
 from flask_mail import Mail, Message
 from magicwork.magicwork import Email, SecretKeying
+import requests
 
 
 mail = Mail()
@@ -48,6 +53,16 @@ def contact():
     elif request.method == 'GET':
         return render_template('contact.html', form=form)
 
+@app.route('/snowday')
+def snowday():
+    return render_template('snowday.html')
+
+@app.route('/finder', methods=['GET'])
+def get_results():
+    url = "https://api.foursquare.com/v2/venues/search?ll=40.8117233,-73.95621249999999&client_id=XVODQ5S2KJJ0BORRXJLTGKOIFMYOLCW0YHABIFKFQPQTINRU&client_secret=FI1YNOKL5YPEMOK3ITQS5U3DRBWWJNMIWMO05WJVTAATUOF2&v=20170101&categoryId=4d4b7105d754a06374d81259&"
+    results = requests.get(url).json()
+    # print(results)
+    return jsonify(results=results)
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0",port=5000,debug=False)
