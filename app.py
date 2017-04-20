@@ -3,6 +3,7 @@ from forms import ContactForm
 from flask_mail import Mail, Message
 from magicwork.magicwork import Email, SecretKeying, SundayFunday
 import requests
+import foursquare
 
 mail = Mail()
 
@@ -60,18 +61,18 @@ def index():
         access_token = client.oauth.get_token(code)
         client.set_access_token(access_token)
         user = client.users()
-        return redirect(url_for('home', access_token=access_token))
+        return redirect(url_for('sundayfunday', access_token=access_token))
     return redirect(auth_uri)
 
 
 
 @app.route('/sundayfunday/home')
-def home():
+def sundayfunday():
     access_token = request.args.get('access_token')
     return render_template('sundayfunday.html', access_token=access_token)
 
 @app.route('/sundayfunday/about')
-def about():
+def sundayfunday_about():
     return render_template('sundayfundayabout.html')
 
 
