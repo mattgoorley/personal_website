@@ -20,6 +20,8 @@ app.config["MAIL_PASSWORD"] = Email.ymailpw
 mail.init_app(app)
 
 @app.route('/')
+@app.route('/home')
+@app.route('/about')
 def home():
     return render_template('home.html')
 
@@ -43,7 +45,7 @@ def contact():
             """.format(form.name.data, form.email.data, form.message.data)
             mail.send(msg)
 
-            return 'Form posted.'
+            return redirect(url_for('contact'))
 
     elif request.method == 'GET':
         return render_template('contact.html', form=form)
