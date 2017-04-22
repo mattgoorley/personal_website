@@ -1,6 +1,6 @@
 
 from flask import Flask, render_template, request, redirect, url_for, flash, json, jsonify
-from forms import ContactForm
+# from forms import ContactForm
 # from flask_mail import Mail, Message
 from magicwork.magicwork import Email, SecretKeying, SundayFunday
 import requests
@@ -24,7 +24,7 @@ app.secret_key = SecretKeying.secret_key
 @app.route('/home')
 @app.route('/about')
 def home():
-    return render_template('home.html')
+    return render_template('index.html')
 
 @app.route('/snowday')
 def snowday():
